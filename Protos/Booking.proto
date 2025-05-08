@@ -1,0 +1,55 @@
+syntax = "proto3";
+package booking;
+
+// Définition du message Booking
+message Booking {
+  string id = 1;
+  string userId = 2;
+  string flightId = 3;
+  string status = 4; // Par exemple: "confirmed", "cancelled", "pending"
+}
+
+// Définition des messages de requête et de réponse pour les méthodes
+message GetBookingRequest {
+  string status = 1;
+}
+
+message GetBookingResponse {
+  repeated Booking bookings = 1; 
+}
+
+message CreateBookingRequest {
+  string userId = 1;
+  string flightId = 2;
+}
+
+message CreateBookingResponse {
+  Booking booking = 1;
+}
+
+
+
+message ListAllBookingsRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message ListAllBookingsResponse {
+  repeated Booking bookings = 1;
+}
+
+message DeleteBookingRequest {
+  string booking_id = 1;
+}
+
+message DeleteBookingResponse {
+  string message = 1;
+}
+
+// Définition du service de réservation
+service BookingService {
+  rpc GetBooking(GetBookingRequest) returns (GetBookingResponse);
+  rpc CreateBooking(CreateBookingRequest) returns (CreateBookingResponse);
+  rpc ListAllBookings(ListAllBookingsRequest) returns (ListAllBookingsResponse);
+  rpc DeleteBooking(DeleteBookingRequest) returns (DeleteBookingResponse);
+}

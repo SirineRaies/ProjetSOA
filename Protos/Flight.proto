@@ -1,0 +1,61 @@
+syntax = "proto3";
+package flight;
+
+// Définition du message Flight
+message Flight {
+  string id = 1;
+  string flightNumber = 2;
+  string departure = 3;  // Aéroport de départ
+  string arrival = 4;    // Aéroport d'arrivée
+  string date = 5;       // Format: YYYY-MM-DD ou timestamp
+  float price = 6;
+  int32 seats = 7;           // Nombre total de sièges
+  int32 availableSeats = 8;  // Sièges disponibles
+  int32 capacity = 9;        // Capacité totale de l'avion
+}
+
+// Définition des messages de requête et de réponse
+message GetFlightRequest {
+  string flight_id = 1;
+}
+
+message GetFlightResponse {
+  Flight flight = 1;
+}
+
+message SearchFlightsRequest {
+  string departure = 1;
+  string arrival = 2;
+  string date = 3;  // Optionnel
+  int32 passengers = 4; // Optionnel
+}
+
+message SearchFlightsResponse {
+  repeated Flight flights = 1;
+}
+
+message UpdateFlightSeatsRequest {
+  string flight_id = 1;
+  int32 seatsChange = 2; // Nombre de sièges à ajouter/retirer (positif/négatif)
+}
+
+message UpdateFlightSeatsResponse {
+  Flight flight = 1;
+}
+
+message ListAllFlightsRequest {
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message ListAllFlightsResponse {
+  repeated Flight flights = 1;
+}
+
+// Définition du service de vols
+service FlightService {
+  rpc GetFlight(GetFlightRequest) returns (GetFlightResponse);
+  rpc SearchFlights(SearchFlightsRequest) returns (SearchFlightsResponse);
+  rpc UpdateFlightSeats(UpdateFlightSeatsRequest) returns (UpdateFlightSeatsResponse);
+  rpc ListAllFlights(ListAllFlightsRequest) returns (ListAllFlightsResponse);
+}

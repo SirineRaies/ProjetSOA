@@ -1,0 +1,52 @@
+syntax = "proto3";
+package user;
+
+// Définition du message User
+message User {
+  string id = 1;
+  string name = 2;
+}
+
+// Définition des messages de requête et de réponse
+message GetUserRequest {
+  string user_id = 1;
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
+message CreateUserRequest {
+  string name = 1;
+}
+
+message CreateUserResponse {
+  User user = 1;
+}
+
+message UpdateUserNameRequest {
+  string user_id = 1;
+  string new_name = 2;
+}
+
+message UpdateUserNameResponse {
+  User user = 1;
+}
+
+message ListAllUsersRequest {
+  // Paramètres optionnels de pagination
+  int32 page = 1;
+  int32 limit = 2;
+}
+
+message ListAllUsersResponse {
+  repeated User users = 1;
+}
+
+// Définition du service utilisateur
+service UserService {
+  rpc GetUser(GetUserRequest) returns (GetUserResponse);
+  rpc CreateUser(CreateUserRequest) returns (CreateUserResponse);
+  rpc UpdateUserName(UpdateUserNameRequest) returns (UpdateUserNameResponse);
+  rpc ListAllUsers(ListAllUsersRequest) returns (ListAllUsersResponse);
+}
