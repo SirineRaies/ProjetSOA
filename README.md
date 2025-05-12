@@ -18,7 +18,7 @@ Une **API Gateway** permet l’interfaçage en REST et GraphQL. Les communicatio
 
 ## 🌐 Points d'entrée
 
-### 🔹 GraphQL (via Apollo Server)
+### 🔹 GraphQL 
 - **URL** : `http://localhost:4000/graphql`
 - **Requêtes disponibles** :
   - `searchFlights(departure: String, arrival: String, date: String, passengers: Int): [Flight]`
