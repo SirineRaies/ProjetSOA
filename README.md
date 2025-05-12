@@ -22,17 +22,17 @@ Une **API Gateway** permet l’interfaçage en REST et GraphQL. Les communicatio
 - **URL** : `http://localhost:4000/graphql`
 - **Requêtes disponibles** :
   - `searchFlights(departure: String, arrival: String, date: String, passengers: Int): [Flight]`
-  - `userBookings(userId: String!): [Booking]`
+  - `booking(status: String!): [Booking]`
   - `CreateBooking(userId: String!, flightId: String!): Booking`
   - `cancelBooking(id: String!): Booking`
-  - `updateBookingStatus(id: String!, newStatus: String!): Booking`
   - `flights`, `users`, `bookings`, etc.
 
 ### 🔹 REST API (via Express Routes)
 - **Exemples d’URL** :
-  - `GET /api/users` – Liste des utilisateurs
-  - `POST /api/bookings` – Créer une réservation
-  - `POST /api/flights/search` – Rechercher des vols
+  - `GET /bookings` – Liste des utilisateurs
+  - `POST /users` – Créer un user
+  - `PUT /flights/:id` – Mise à jour des vols
+  - `DELETE /bokings/:id` – Supprimer des réservations
 
 ### 🔹 gRPC
 - **Services utilisés** :
@@ -49,6 +49,5 @@ Une **API Gateway** permet l’interfaçage en REST et GraphQL. Les communicatio
 - **Apollo Server** : Pour la mise en place de l'API GraphQL.
 - **MongoDB** : Base de données NoSQL pour le stockage des utilisateurs, vols et réservations.
 - **gRPC** : Pour la communication performante entre microservices.
-- **@graphql-tools/merge** : Pour fusionner les schémas et résolveurs GraphQL.
 - **body-parser** & **cors** : Middleware Express pour la gestion des requêtes et de la sécurité CORS.
 
