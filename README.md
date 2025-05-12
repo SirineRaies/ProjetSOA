@@ -51,3 +51,6 @@ Une **API Gateway** permet l’interfaçage en REST et GraphQL. Les communicatio
 - **gRPC** : Pour la communication performante entre microservices.
 - **body-parser** & **cors** : Middleware Express pour la gestion des requêtes et de la sécurité CORS.
 
+
+## Lien de présentation : 
+https://www.canva.com/design/DAGnLqC-V-o/OD05_bpqbi80c73k_h3rxA/edit?ui=eyJBIjp7fX0
